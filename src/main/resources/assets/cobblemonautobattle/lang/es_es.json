@@ -1,0 +1,24 @@
+{
+  "key.categories.autobattle": "Cobblemon Auto-Batalla",
+  "key.autobattle.toggle": "Activar/Desactivar Auto-Batalla",
+  "key.autobattle.hunt_target": "Cazar Pokémon Apuntado",
+
+  "autobattle.enabled": "Auto-Batalla activada: tu Pokémon enviado cazará Pokémon salvajes cercanos (nivel ≤ su nivel + %s).",
+  "autobattle.disabled": "Auto-Batalla desactivada.",
+  "autobattle.disabled_in_config": "La Auto-Batalla está desactivada en la configuración.",
+  "autobattle.no_usable_pokemon": "No tienes Pokémon utilizables en tu equipo.",
+  "autobattle.retreat": "Auto-Batalla: PS bajos, %s se retiró.",
+  "autobattle.rare_found": "✦ Auto-Batalla: ¡%s encontrado cerca — no será atacado!",
+  "autobattle.rare_found_shiny": "✦ Auto-Batalla: ¡%s SHINY encontrado cerca — no será atacado!",
+  "autobattle.hunt_no_target": "No hay Pokémon salvajes a la vista.",
+  "autobattle.hunt_protected": "%s está protegido — no será atacado.",
+  "autobattle.hunt_too_strong": "%s (nivel %s) es demasiado fuerte para tus Pokémon.",
+  "autobattle.hunt_started": "¡%s va tras %s!",
+  "autobattle.battle_lost": "¡%s perdió la batalla contra %s y se retiró!",
+  "autobattle.hunter_too_weak": "¡%s está demasiado herido para seguir luchando — cúralo primero!",
+  "autobattle.victory": "Auto-Batalla: %s derrotado",
+  "autobattle.victory_xp": "Auto-Batalla: %s derrotado (+%s EXP)",
+
+  "autobattle.command.reload": "Auto-Batalla recargada: activado=%s, radio de búsqueda=%s, margen de nivel=%s",
+  "autobattle.command.info": "Auto-Batalla: activado=%s, radio de búsqueda=%s, alcance de ataque=%s, margen de nivel=%s, retirar con PS ≤ %s%%, EXP=%s, EVs=%s, botín=%s"
+}

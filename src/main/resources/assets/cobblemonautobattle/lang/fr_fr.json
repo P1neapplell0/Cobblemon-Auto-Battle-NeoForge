@@ -1,0 +1,24 @@
+{
+  "key.categories.autobattle": "Cobblemon Auto-Combat",
+  "key.autobattle.toggle": "Activer/Désactiver l'Auto-Combat",
+  "key.autobattle.hunt_target": "Chasser le Pokémon Ciblé",
+
+  "autobattle.enabled": "Auto-Combat activé : votre Pokémon envoyé chassera les Pokémon sauvages proches (niveau ≤ son niveau + %s).",
+  "autobattle.disabled": "Auto-Combat désactivé.",
+  "autobattle.disabled_in_config": "L'Auto-Combat est désactivé dans la configuration.",
+  "autobattle.no_usable_pokemon": "Vous n'avez pas de Pokémon utilisable dans votre équipe.",
+  "autobattle.retreat": "Auto-Combat : PV faibles, %s s'est retiré.",
+  "autobattle.rare_found": "✦ Auto-Combat : %s trouvé à proximité — il ne sera pas attaqué !",
+  "autobattle.rare_found_shiny": "✦ Auto-Combat : %s SHINY trouvé à proximité — il ne sera pas attaqué !",
+  "autobattle.hunt_no_target": "Aucun Pokémon sauvage en vue.",
+  "autobattle.hunt_protected": "%s est protégé — il ne sera pas attaqué.",
+  "autobattle.hunt_too_strong": "%s (niveau %s) est trop fort pour vos Pokémon.",
+  "autobattle.hunt_started": "%s poursuit %s !",
+  "autobattle.battle_lost": "%s a perdu le combat contre %s et s'est retiré !",
+  "autobattle.hunter_too_weak": "%s est trop blessé pour continuer à se battre — soignez-le d'abord !",
+  "autobattle.victory": "Auto-Combat : %s vaincu",
+  "autobattle.victory_xp": "Auto-Combat : %s vaincu (+%s XP)",
+
+  "autobattle.command.reload": "Auto-Combat rechargé : activé=%s, rayon de recherche=%s, marge de niveau=%s",
+  "autobattle.command.info": "Auto-Combat : activé=%s, rayon de recherche=%s, portée d'attaque=%s, marge de niveau=%s, retraite à PV ≤ %s%%, XP=%s, EVs=%s, butin=%s"
+}

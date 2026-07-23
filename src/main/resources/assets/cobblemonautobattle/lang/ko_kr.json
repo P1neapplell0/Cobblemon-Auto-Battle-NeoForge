@@ -1,0 +1,24 @@
+{
+  "key.categories.autobattle": "Cobblemon 자동 전투",
+  "key.autobattle.toggle": "자동 전투 전환",
+  "key.autobattle.hunt_target": "대상 포켓몬 사냥",
+
+  "autobattle.enabled": "자동 전투 활성화: 내보낸 포켓몬이 근처의 야생 포켓몬을 자동으로 사냥합니다 (레벨 ≤ 자신의 레벨 + %s).",
+  "autobattle.disabled": "자동 전투 비활성화.",
+  "autobattle.disabled_in_config": "자동 전투가 설정에서 비활성화되어 있습니다.",
+  "autobattle.no_usable_pokemon": "파티에 사용 가능한 포켓몬이 없습니다.",
+  "autobattle.retreat": "자동 전투: HP가 낮아 %s이(가) 후퇴했습니다.",
+  "autobattle.rare_found": "✦ 자동 전투: 근처에서 %s 발견 — 공격하지 않습니다!",
+  "autobattle.rare_found_shiny": "✦ 자동 전투: 근처에서 이로치 %s 발견 — 공격하지 않습니다!",
+  "autobattle.hunt_no_target": "시야에 야생 포켓몬이 없습니다.",
+  "autobattle.hunt_protected": "%s은(는) 보호받고 있습니다 — 공격하지 않습니다.",
+  "autobattle.hunt_too_strong": "%s (레벨 %s)은(는) 당신의 포켓몬에게 너무 강합니다.",
+  "autobattle.hunt_started": "%s이(가) %s을(를) 쫓고 있습니다!",
+  "autobattle.battle_lost": "%s이(가) %s에게 패배하여 후퇴했습니다!",
+  "autobattle.hunter_too_weak": "%s은(는) 너무 다쳐서 싸울 수 없습니다 — 먼저 회복하세요!",
+  "autobattle.victory": "자동 전투: %s을(를) 물리쳤습니다",
+  "autobattle.victory_xp": "자동 전투: %s을(를) 물리쳤습니다 (+%s XP)",
+
+  "autobattle.command.reload": "자동 전투 다시 불러옴: 활성화=%s, 검색 반경=%s, 레벨 허용치=%s",
+  "autobattle.command.info": "자동 전투: 활성화=%s, 검색 반경=%s, 공격 범위=%s, 레벨 허용치=%s, HP ≤ %s%%에서 후퇴, XP=%s, EV=%s, 드롭=%s"
+}

@@ -1,0 +1,24 @@
+{
+  "key.categories.autobattle": "Cobblemon Auto-Kampf",
+  "key.autobattle.toggle": "Auto-Kampf umschalten",
+  "key.autobattle.hunt_target": "Anvisiertes Pokémon jagen",
+
+  "autobattle.enabled": "Auto-Kampf aktiviert: Dein ausgesandtes Pokémon jagt wilde Pokémon in der Nähe (Level ≤ eigenes Level + %s).",
+  "autobattle.disabled": "Auto-Kampf deaktiviert.",
+  "autobattle.disabled_in_config": "Auto-Kampf ist in der Konfiguration deaktiviert.",
+  "autobattle.no_usable_pokemon": "Du hast keine einsetzbaren Pokémon in deinem Team.",
+  "autobattle.retreat": "Auto-Kampf: niedrige KP, %s hat sich zurückgezogen.",
+  "autobattle.rare_found": "✦ Auto-Kampf: %s in der Nähe gefunden — es wird nicht angegriffen!",
+  "autobattle.rare_found_shiny": "✦ Auto-Kampf: ein SHINY %s in der Nähe gefunden — es wird nicht angegriffen!",
+  "autobattle.hunt_no_target": "Keine wilden Pokémon in Sicht.",
+  "autobattle.hunt_protected": "%s ist geschützt — es wird nicht angegriffen.",
+  "autobattle.hunt_too_strong": "%s (Level %s) ist zu stark für deine Pokémon.",
+  "autobattle.hunt_started": "%s jagt %s!",
+  "autobattle.battle_lost": "%s hat den Kampf gegen %s verloren und sich zurückgezogen!",
+  "autobattle.hunter_too_weak": "%s ist zu verletzt um weiterzukämpfen — heile es zuerst!",
+  "autobattle.victory": "Auto-Kampf: %s besiegt",
+  "autobattle.victory_xp": "Auto-Kampf: %s besiegt (+%s EP)",
+
+  "autobattle.command.reload": "Auto-Kampf neu geladen: aktiviert=%s, Suchradius=%s, Level-Toleranz=%s",
+  "autobattle.command.info": "Auto-Kampf: aktiviert=%s, Suchradius=%s, Angriffsreichweite=%s, Level-Toleranz=%s, Rückzug bei KP ≤ %s%%, EP=%s, EVs=%s, Beute=%s"
+}

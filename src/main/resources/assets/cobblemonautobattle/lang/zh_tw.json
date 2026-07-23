@@ -1,0 +1,24 @@
+{
+  "key.categories.autobattle": "Cobblemon 自動戰鬥",
+  "key.autobattle.toggle": "切換自動戰鬥",
+  "key.autobattle.hunt_target": "狩獵目標寶可夢",
+
+  "autobattle.enabled": "自動戰鬥已開啟：你的出戰寶可夢將自動狩獵附近的野生寶可夢（等級 ≤ 己方等級 + %s）。",
+  "autobattle.disabled": "自動戰鬥已關閉。",
+  "autobattle.disabled_in_config": "自動戰鬥已在設定中停用。",
+  "autobattle.no_usable_pokemon": "你的隊伍中沒有可用的寶可夢。",
+  "autobattle.retreat": "自動戰鬥：HP 過低，%s 已撤退。",
+  "autobattle.rare_found": "✦ 自動戰鬥：發現附近的 %s — 不會攻擊它！",
+  "autobattle.rare_found_shiny": "✦ 自動戰鬥：發現附近的色違 %s — 不會攻擊它！",
+  "autobattle.hunt_no_target": "視野內沒有野生寶可夢。",
+  "autobattle.hunt_protected": "%s 受到保護 — 不會攻擊它。",
+  "autobattle.hunt_too_strong": "%s（等級 %s）對你的寶可夢來說太強了。",
+  "autobattle.hunt_started": "%s 正在追擊 %s！",
+  "autobattle.battle_lost": "%s 輸給了 %s 並撤退了！",
+  "autobattle.hunter_too_weak": "%s 傷勢過重無法繼續戰鬥 — 請先治療它！",
+  "autobattle.victory": "自動戰鬥：擊敗了 %s",
+  "autobattle.victory_xp": "自動戰鬥：擊敗了 %s（+%s 經驗值）",
+
+  "autobattle.command.reload": "自動戰鬥已重新載入：啟用=%s，搜尋半徑=%s，等級容差=%s",
+  "autobattle.command.info": "自動戰鬥：啟用=%s，搜尋半徑=%s，攻擊範圍=%s，等級容差=%s，HP ≤ %s%% 時撤退，經驗值=%s，努力值=%s，掉落物=%s"
+}

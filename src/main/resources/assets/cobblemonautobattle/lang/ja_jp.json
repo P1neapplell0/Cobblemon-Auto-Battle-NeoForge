@@ -1,0 +1,24 @@
+{
+  "key.categories.autobattle": "Cobblemon オートバトル",
+  "key.autobattle.toggle": "オートバトルの切り替え",
+  "key.autobattle.hunt_target": "指定したポケモンを追跡",
+
+  "autobattle.enabled": "オートバトル有効：出ているポケモンが近くの野生ポケモンを自動で狩ります（レベル ≤ 自分のレベル + %s）。",
+  "autobattle.disabled": "オートバトル無効。",
+  "autobattle.disabled_in_config": "オートバトルは設定で無効になっています。",
+  "autobattle.no_usable_pokemon": "手持ちに使えるポケモンがいません。",
+  "autobattle.retreat": "オートバトル：HPが低いため、%s が撤退しました。",
+  "autobattle.rare_found": "✦ オートバトル：近くに %s を発見 — 攻撃しません！",
+  "autobattle.rare_found_shiny": "✦ オートバトル：近くに色違いの %s を発見 — 攻撃しません！",
+  "autobattle.hunt_no_target": "視界に野生ポケモンがいません。",
+  "autobattle.hunt_protected": "%s は保護されています — 攻撃しません。",
+  "autobattle.hunt_too_strong": "%s（レベル %s）はあなたのポケモンには強すぎます。",
+  "autobattle.hunt_started": "%s が %s を追いかけています！",
+  "autobattle.battle_lost": "%s は %s に負けて撤退しました！",
+  "autobattle.hunter_too_weak": "%s は傷つきすぎて戦えません — 先に回復してください！",
+  "autobattle.victory": "オートバトル：%s を倒しました",
+  "autobattle.victory_xp": "オートバトル：%s を倒しました（+%s XP）",
+
+  "autobattle.command.reload": "オートバトル再読み込み：有効=%s、検索半径=%s、レベル余裕=%s",
+  "autobattle.command.info": "オートバトル：有効=%s、検索半径=%s、攻撃範囲=%s、レベル余裕=%s、HP ≤ %s%% で撤退、XP=%s、EV=%s、ドロップ=%s"
+}

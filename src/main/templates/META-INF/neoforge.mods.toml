@@ -1,0 +1,34 @@
+modLoader = "kotlinforforge"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+issueTrackerURL = "https://github.com/viniciusmorenorogato-crypto/CobblemonAutoBattle/issues"
+
+[[mods]]
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+displayURL = "https://github.com/viniciusmorenorogato-crypto/CobblemonAutoBattle"
+authors = "${mod_authors}"
+credits = "Original Fabric mod by vinic; NeoForge 1.21.1 port by P1nero"
+description = '''${mod_description}'''
+
+[[dependencies."${mod_id}"]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."${mod_id}"]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."${mod_id}"]]
+modId = "cobblemon"
+type = "required"
+versionRange = "[1.7.3,1.8.0)"
+ordering = "AFTER"
+side = "BOTH"

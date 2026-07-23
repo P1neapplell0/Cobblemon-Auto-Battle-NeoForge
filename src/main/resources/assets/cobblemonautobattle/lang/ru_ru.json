@@ -1,0 +1,24 @@
+{
+  "key.categories.autobattle": "Cobblemon Авто-Бой",
+  "key.autobattle.toggle": "Включить/Выключить Авто-Бой",
+  "key.autobattle.hunt_target": "Охота на выбранного Покемона",
+
+  "autobattle.enabled": "Авто-Бой включён: ваш отправленный Покемон будет охотиться на диких Покемонов поблизости (уровень ≤ его уровень + %s).",
+  "autobattle.disabled": "Авто-Бой выключен.",
+  "autobattle.disabled_in_config": "Авто-Бой отключён в настройках.",
+  "autobattle.no_usable_pokemon": "У вас нет пригодных Покемонов в команде.",
+  "autobattle.retreat": "Авто-Бой: низкое здоровье, %s отступил.",
+  "autobattle.rare_found": "✦ Авто-Бой: %s найден поблизости — он не будет атакован!",
+  "autobattle.rare_found_shiny": "✦ Авто-Бой: ШАЙНИ %s найден поблизости — он не будет атакован!",
+  "autobattle.hunt_no_target": "Диких Покемонов в поле зрения нет.",
+  "autobattle.hunt_protected": "%s защищён — он не будет атакован.",
+  "autobattle.hunt_too_strong": "%s (уровень %s) слишком силён для ваших Покемонов.",
+  "autobattle.hunt_started": "%s преследует %s!",
+  "autobattle.battle_lost": "%s проиграл битву против %s и отступил!",
+  "autobattle.hunter_too_weak": "%s слишком ранен, чтобы продолжать сражаться — сначала вылечите его!",
+  "autobattle.victory": "Авто-Бой: %s побеждён",
+  "autobattle.victory_xp": "Авто-Бой: %s побеждён (+%s опыта)",
+
+  "autobattle.command.reload": "Авто-Бой перезагружен: включён=%s, радиус поиска=%s, запас уровня=%s",
+  "autobattle.command.info": "Авто-Бой: включён=%s, радиус поиска=%s, дальность атаки=%s, запас уровня=%s, отступление при HP ≤ %s%%, опыт=%s, EVs=%s, добыча=%s"
+}

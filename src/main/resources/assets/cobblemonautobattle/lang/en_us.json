@@ -1,0 +1,24 @@
+{
+  "key.categories.autobattle": "Cobblemon Auto-Battle",
+  "key.autobattle.toggle": "Toggle Auto-Battle",
+  "key.autobattle.hunt_target": "Hunt Targeted Pokémon",
+
+  "autobattle.enabled": "Auto-Battle enabled: your sent-out Pokémon will hunt nearby wild Pokémon (level ≤ theirs + %s).",
+  "autobattle.disabled": "Auto-Battle disabled.",
+  "autobattle.disabled_in_config": "Auto-Battle is disabled in the config.",
+  "autobattle.no_usable_pokemon": "You don't have any usable Pokémon in your party.",
+  "autobattle.retreat": "Auto-Battle: low HP, %s retreated.",
+  "autobattle.rare_found": "✦ Auto-Battle: found %s nearby — it will not be attacked!",
+  "autobattle.rare_found_shiny": "✦ Auto-Battle: found a SHINY %s nearby — it will not be attacked!",
+  "autobattle.hunt_no_target": "No wild Pokémon in your sights.",
+  "autobattle.hunt_protected": "%s is protected — it will not be attacked.",
+  "autobattle.hunt_too_strong": "%s (level %s) is too strong for your Pokémon.",
+  "autobattle.hunt_started": "%s is going after %s!",
+  "autobattle.battle_lost": "%s lost the battle against %s and retreated!",
+  "autobattle.hunter_too_weak": "%s is too hurt to keep battling — heal it first!",
+  "autobattle.victory": "Auto-Battle: defeated %s",
+  "autobattle.victory_xp": "Auto-Battle: defeated %s (+%s XP)",
+
+  "autobattle.command.reload": "Auto-Battle reloaded: enabled=%s, search radius=%s, level margin=%s",
+  "autobattle.command.info": "Auto-Battle: enabled=%s, search radius=%s, attack range=%s, level margin=%s, retreat at HP ≤ %s%%, XP=%s, EVs=%s, drops=%s"
+}
