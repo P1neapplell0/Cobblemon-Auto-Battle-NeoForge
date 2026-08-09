@@ -1,9 +1,17 @@
 package com.cobblemonautobattle.autobattle
 
 import com.cobblemon.mod.common.api.drop.ItemDropEntry
-import com.cobblemon.mod.common.api.pokemon.experience.SidemodExperienceSource
 import com.cobblemon.mod.common.api.pokemon.stats.SidemodEvSource
+import com.cobblemon.mod.common.api.tags.CobblemonItemTags
+import com.cobblemon.mod.common.battles.BattleFormat
+import com.cobblemon.mod.common.battles.BattleSide
+import com.cobblemon.mod.common.battles.actor.PlayerBattleActor
+import com.cobblemon.mod.common.battles.actor.PokemonBattleActor
+import com.cobblemon.mod.common.battles.ai.RandomBattleAI
+import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
 import com.cobblemonautobattle.autobattle.config.AutoBattleConfig
+import com.cobblemon.mod.common.Cobblemon
+import com.cobblemon.mod.common.api.battles.model.PokemonBattle
 import com.cobblemon.mod.common.pokemon.Pokemon
 import net.minecraft.ChatFormatting
 import net.minecraft.core.registries.Registries
@@ -14,7 +22,7 @@ import net.minecraft.world.item.ItemStack
 
 /**
  * Aplica as recompensas de uma vitória do auto-battle ao Pokémon participante e ao jogador.
- * Fonte marcada como "sidemod" (id "autobattle") para conviver com eventos de XP/EV do Cobblemon.
+ * XP is awarded through Cobblemon's battle path so held items and sidemods can observe it.
  */
 object RewardHandler {
 
@@ -48,10 +56,46 @@ object RewardHandler {
     }
 
     private fun awardXp(player: ServerPlayer, winner: Pokemon, wild: Pokemon, config: AutoBattleConfig): Int {
-        val baseYield = wild.form.baseExperienceYield
-        val xp = (baseYield * wild.level / 5.0 * config.xpMultiplier).toInt().coerceAtLeast(1)
-        winner.addExperienceWithPlayer(player, SidemodExperienceSource(SIDEMOD_ID), xp)
-        return xp
+        val party = Cobblemon.storage.getParty(player)
+        val partyPokemon = party.toList()
+        val battleParty = partyPokemon.map(BattlePokemon.Companion::playerOwned)
+        val winnerIndex = partyPokemon.indexOfFirst { it.uuid == winner.uuid }
+
+        // A PlayerBattleActor must contain the whole party. Exp Share/Exp All integrations
+        // inspect that actor when Cobblemon awards the participant's battle experience.
+        if (winnerIndex < 0) return 0
+
+        val defeated = BattlePokemon.Companion.playerOwned(wild)
+        val playerActor = PlayerBattleActor(player.uuid, battleParty)
+        val wildActor = PokemonBattleActor(wild.uuid, defeated, 0F, RandomBattleAI())
+        PokemonBattle(
+            BattleFormat.Companion.GEN_9_SINGLES,
+            BattleSide(playerActor),
+            BattleSide(wildActor),
+        )
+
+        val participant = battleParty[winnerIndex]
+        participant.facedOpponents.add(defeated)
+        defeated.facedOpponents.add(participant)
+
+        var participantXp = 0
+        for (battlePokemon in battleParty) {
+            val pokemon = battlePokemon.effectedPokemon
+            if (pokemon.isFainted()) continue
+
+            val multiplier = when {
+                battlePokemon === participant -> config.xpMultiplier
+                pokemon.heldItem().`is`(CobblemonItemTags.EXPERIENCE_SHARE) ->
+                    Cobblemon.config.experienceShareMultiplier * config.xpMultiplier
+                else -> continue
+            }
+            val xp = Cobblemon.experienceCalculator.calculate(battlePokemon, defeated, multiplier)
+            if (xp <= 0) continue
+
+            if (battlePokemon === participant) participantXp = xp
+            playerActor.awardExperience(battlePokemon, xp)
+        }
+        return participantXp
     }
 
     private fun awardEvs(winner: Pokemon, wild: Pokemon) {
