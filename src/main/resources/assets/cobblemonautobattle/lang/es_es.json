@@ -16,8 +16,8 @@
   "autobattle.hunt_started": "¡%s va tras %s!",
   "autobattle.battle_lost": "¡%s perdió la batalla contra %s y se retiró!",
   "autobattle.hunter_too_weak": "¡%s está demasiado herido para seguir luchando — cúralo primero!",
-  "autobattle.victory": "Auto-Batalla: %s derrotado",
-  "autobattle.victory_xp": "Auto-Batalla: %s derrotado (+%s EXP)",
+  "autobattle.victory": "Auto-Batalla: %s derrotó a %s",
+  "autobattle.victory_xp": "Auto-Batalla: %s derrotó a %s (+%s EXP)",
 
   "autobattle.command.reload": "Auto-Batalla recargada: activado=%s, radio de búsqueda=%s, margen de nivel=%s",
   "autobattle.command.info": "Auto-Batalla: activado=%s, radio de búsqueda=%s, alcance de ataque=%s, margen de nivel=%s, retirar con PS ≤ %s%%, EXP=%s, EVs=%s, botín=%s"

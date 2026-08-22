@@ -16,8 +16,8 @@
   "autobattle.hunt_started": "%s が %s を追いかけています！",
   "autobattle.battle_lost": "%s は %s に負けて撤退しました！",
   "autobattle.hunter_too_weak": "%s は傷つきすぎて戦えません — 先に回復してください！",
-  "autobattle.victory": "オートバトル：%s を倒しました",
-  "autobattle.victory_xp": "オートバトル：%s を倒しました（+%s XP）",
+  "autobattle.victory": "オートバトル：%s が %s を倒しました",
+  "autobattle.victory_xp": "オートバトル：%s が %s を倒しました（+%s XP）",
 
   "autobattle.command.reload": "オートバトル再読み込み：有効=%s、検索半径=%s、レベル余裕=%s",
   "autobattle.command.info": "オートバトル：有効=%s、検索半径=%s、攻撃範囲=%s、レベル余裕=%s、HP ≤ %s%% で撤退、XP=%s、EV=%s、ドロップ=%s"

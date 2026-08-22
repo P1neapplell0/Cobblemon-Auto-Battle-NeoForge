@@ -16,8 +16,8 @@
   "autobattle.hunt_started": "%s 正在追擊 %s！",
   "autobattle.battle_lost": "%s 輸給了 %s 並撤退了！",
   "autobattle.hunter_too_weak": "%s 傷勢過重無法繼續戰鬥 — 請先治療它！",
-  "autobattle.victory": "自動戰鬥：擊敗了 %s",
-  "autobattle.victory_xp": "自動戰鬥：擊敗了 %s（+%s 經驗值）",
+  "autobattle.victory": "自動戰鬥：%s擊敗了 %s",
+  "autobattle.victory_xp": "自動戰鬥：%s擊敗了 %s（+%s 經驗值）",
 
   "autobattle.command.reload": "自動戰鬥已重新載入：啟用=%s，搜尋半徑=%s，等級容差=%s",
   "autobattle.command.info": "自動戰鬥：啟用=%s，搜尋半徑=%s，攻擊範圍=%s，等級容差=%s，HP ≤ %s%% 時撤退，經驗值=%s，努力值=%s，掉落物=%s"

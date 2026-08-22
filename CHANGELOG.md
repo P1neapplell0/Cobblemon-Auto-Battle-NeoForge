@@ -2,6 +2,7 @@
 
 ## 1.4.2 - 2026-08-22
 
+- Include the attacking Pokémon's name in victory announcements.
 - Require Pokémon to be manually released before they can participate in auto-battle.
 - Stop auto-battle from releasing a party Pokémon when enabled or when starting a directed hunt.
 - Set defeated Pokémon to fainted and automatically recall them after losing an auto-battle.

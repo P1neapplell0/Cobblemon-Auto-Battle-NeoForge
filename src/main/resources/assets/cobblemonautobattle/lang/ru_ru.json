@@ -16,8 +16,8 @@
   "autobattle.hunt_started": "%s преследует %s!",
   "autobattle.battle_lost": "%s проиграл битву против %s и отступил!",
   "autobattle.hunter_too_weak": "%s слишком ранен, чтобы продолжать сражаться — сначала вылечите его!",
-  "autobattle.victory": "Авто-Бой: %s побеждён",
-  "autobattle.victory_xp": "Авто-Бой: %s побеждён (+%s опыта)",
+  "autobattle.victory": "Авто-Бой: %s победил %s",
+  "autobattle.victory_xp": "Авто-Бой: %s победил %s (+%s опыта)",
 
   "autobattle.command.reload": "Авто-Бой перезагружен: включён=%s, радиус поиска=%s, запас уровня=%s",
   "autobattle.command.info": "Авто-Бой: включён=%s, радиус поиска=%s, дальность атаки=%s, запас уровня=%s, отступление при HP ≤ %s%%, опыт=%s, EVs=%s, добыча=%s"

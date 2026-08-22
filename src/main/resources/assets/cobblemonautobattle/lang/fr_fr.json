@@ -16,8 +16,8 @@
   "autobattle.hunt_started": "%s poursuit %s !",
   "autobattle.battle_lost": "%s a perdu le combat contre %s et s'est retiré !",
   "autobattle.hunter_too_weak": "%s est trop blessé pour continuer à se battre — soignez-le d'abord !",
-  "autobattle.victory": "Auto-Combat : %s vaincu",
-  "autobattle.victory_xp": "Auto-Combat : %s vaincu (+%s XP)",
+  "autobattle.victory": "Auto-Combat : %s a vaincu %s",
+  "autobattle.victory_xp": "Auto-Combat : %s a vaincu %s (+%s XP)",
 
   "autobattle.command.reload": "Auto-Combat rechargé : activé=%s, rayon de recherche=%s, marge de niveau=%s",
   "autobattle.command.info": "Auto-Combat : activé=%s, rayon de recherche=%s, portée d'attaque=%s, marge de niveau=%s, retraite à PV ≤ %s%%, XP=%s, EVs=%s, butin=%s"

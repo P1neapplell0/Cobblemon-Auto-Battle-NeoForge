@@ -42,14 +42,16 @@ object RewardHandler {
         if (config.announceRewards) {
             // translatedName localiza até o nome da espécie no idioma do client.
             val name = wild.species.translatedName.copy().withStyle(ChatFormatting.YELLOW)
+            val winnerName = winner.species.translatedName.copy().withStyle(ChatFormatting.AQUA)
             val message = if (xp > 0) {
                 Component.translatable(
                     "autobattle.victory_xp",
+                    winnerName,
                     name,
                     Component.literal(xp.toString()).withStyle(ChatFormatting.GREEN)
                 )
             } else {
-                Component.translatable("autobattle.victory", name)
+                Component.translatable("autobattle.victory", winnerName, name)
             }
             player.sendSystemMessage(message.withStyle(ChatFormatting.GOLD))
         }

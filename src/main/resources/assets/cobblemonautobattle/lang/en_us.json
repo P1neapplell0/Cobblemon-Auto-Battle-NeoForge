@@ -16,8 +16,8 @@
   "autobattle.hunt_started": "%s is going after %s!",
   "autobattle.battle_lost": "%s lost the battle against %s and retreated!",
   "autobattle.hunter_too_weak": "%s is too hurt to keep battling — heal it first!",
-  "autobattle.victory": "Auto-Battle: defeated %s",
-  "autobattle.victory_xp": "Auto-Battle: defeated %s (+%s XP)",
+  "autobattle.victory": "Auto-Battle: %s defeated %s",
+  "autobattle.victory_xp": "Auto-Battle: %s defeated %s (+%s XP)",
 
   "autobattle.command.reload": "Auto-Battle reloaded: enabled=%s, search radius=%s, level margin=%s",
   "autobattle.command.info": "Auto-Battle: enabled=%s, search radius=%s, attack range=%s, level margin=%s, retreat at HP ≤ %s%%, XP=%s, EVs=%s, drops=%s"
