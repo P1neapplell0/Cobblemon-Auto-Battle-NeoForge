@@ -71,8 +71,8 @@ class Hunter(
  *
  * @property playerId dono da sessão.
  * @property hunters os caçadores ativos (reconciliados a cada tick com os Pokémon fora).
- * @property pendingModSent UUIDs de Pokémon que o mod acabou de soltar e ainda não viraram
- *   caçador — usado para marcá-los como [Hunter.sentByMod] quando a entidade aparecer.
+ * @property pendingModSent Mantido para compatibilidade de estado; novas sessões nunca recebem
+ *   Pokémon enviados automaticamente pelo mod.
  */
 class AutoBattleSession(
     val playerId: UUID,
@@ -82,8 +82,7 @@ class AutoBattleSession(
     val pendingModSent = mutableSetOf<UUID>()
 
     /**
-     * Alvo apontado (tecla V) aguardando um caçador: usado quando o líder acabou de ser
-     * soltado e a entidade dele ainda não apareceu no mundo.
+     * Alvo apontado (tecla V) aguardando um caçador que o jogador solte manualmente.
      */
     var pendingDirected: PokemonEntity? = null
 

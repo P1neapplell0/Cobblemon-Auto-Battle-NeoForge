@@ -58,8 +58,8 @@ object AutoBattleManager {
     /**
      * Caça direcionada (tecla V): raycast do olhar do jogador até [AutoBattleConfig.directedHuntRange]
      * blocos; se mirar num selvagem válido, o caçador mais próximo vai atrás DELE (ignorando o raio
-     * de busca). Sem sessão ativa, cria uma sessão MANUAL: solta o líder, cumpre a missão e se
-     * encerra sozinha. Raros protegidos continuam intocáveis.
+     * de busca). Só Pokémon que já estejam fora da bola podem aceitar a missão. Raros protegidos
+     * continuam intocáveis.
      */
     fun huntTarget(player: ServerPlayer) {
         val config = AutoBattle.config
@@ -67,7 +67,7 @@ object AutoBattleManager {
             message(player, ChatFormatting.RED, "autobattle.disabled_in_config")
             return
         }
-        val level = player.level() as? ServerLevel ?: return
+        if (player.level() !is ServerLevel) return
 
         val target = player.traceFirstEntityCollision(
             maxDistance = config.directedHuntRange.toFloat(),
@@ -96,19 +96,12 @@ object AutoBattleManager {
         val hunter = session.hunters
             .filter { isBattleReady(it.pokemon, config) }
             .minByOrNull { it.entity.distanceToSqr(target) }
-        val party = Cobblemon.storage.getParty(player)
-        val attacker = hunter?.pokemon ?: party.firstOrNull { isBattleReady(it, config) }
-        if (attacker == null) {
+        if (hunter == null) {
             if (existing == null && session.hunters.isEmpty()) sessions.remove(player.uuid)
-            val hurt = party.firstOrNull { !it.isFainted() }
-            if (hurt != null) {
-                val hurtName = hurt.species.translatedName.copy().withStyle(ChatFormatting.AQUA)
-                message(player, ChatFormatting.RED, "autobattle.hunter_too_weak", hurtName)
-            } else {
-                message(player, ChatFormatting.RED, "autobattle.no_usable_pokemon")
-            }
+            message(player, ChatFormatting.RED, "autobattle.no_usable_pokemon")
             return
         }
+        val attacker = hunter.pokemon
         if (!CombatCalculator.isEligibleTarget(attacker, target.pokemon, config)) {
             if (existing == null && session.hunters.isEmpty()) sessions.remove(player.uuid)
             message(player, ChatFormatting.RED, "autobattle.hunt_too_strong", targetName, target.pokemon.level)
@@ -116,16 +109,9 @@ object AutoBattleManager {
         }
 
         val attackerName = attacker.species.translatedName.copy().withStyle(ChatFormatting.AQUA)
-        if (hunter != null) {
-            hunter.target = target
-            hunter.directed = true
-            hunter.resetChase()
-        } else {
-            // Ninguém fora: solta o líder; a missão é entregue quando a entidade aparecer.
-            session.pendingModSent.add(attacker.uuid)
-            session.pendingDirected = target
-            attacker.sendOutWithAnimation(player, level, player.position())
-        }
+        hunter.target = target
+        hunter.directed = true
+        hunter.resetChase()
         message(player, ChatFormatting.GREEN, "autobattle.hunt_started", attackerName, targetName)
     }
 
@@ -136,32 +122,8 @@ object AutoBattleManager {
             return
         }
 
-        val level = player.level() as? ServerLevel ?: return
-        val party = Cobblemon.storage.getParty(player)
-
         val session = AutoBattleSession(player.uuid)
         sessions[player.uuid] = session
-
-        // Se o jogador já tem Pokémon fora, eles é que caçam. Só soltamos o líder se não houver nenhum.
-        val anyOut = party.any { isOwnedOut(it.entity, player) }
-        if (!anyOut) {
-            // Líder precisa estar acima do limiar de recuo, senão a caça abortaria no 1º tick.
-            val lead = party.firstOrNull { isBattleReady(it, config) }
-            if (lead == null) {
-                sessions.remove(player.uuid)
-                val hurt = party.firstOrNull { !it.isFainted() }
-                if (hurt != null) {
-                    val hurtName = hurt.species.translatedName.copy().withStyle(ChatFormatting.AQUA)
-                    message(player, ChatFormatting.RED, "autobattle.hunter_too_weak", hurtName)
-                } else {
-                    message(player, ChatFormatting.RED, "autobattle.no_usable_pokemon")
-                }
-                return
-            }
-            session.pendingModSent.add(lead.uuid)
-            // A entidade é capturada como caçador no próximo tick, via reconcileHunters.
-            lead.sendOutWithAnimation(player, level, player.position())
-        }
 
         message(player, ChatFormatting.GREEN, "autobattle.enabled", config.levelMargin)
     }
@@ -204,7 +166,7 @@ object AutoBattleManager {
         // 1. Sincroniza a lista de caçadores com os Pokémon que o jogador tem fora agora.
         reconcileHunters(player, session)
 
-        // Missão direcionada aguardando caçador (o líder acabou de ser soltado pela tecla V).
+        // Missão direcionada aguardando um Pokémon que o jogador solte manualmente.
         val pending = session.pendingDirected
         if (pending != null) {
             if (!isWildCandidate(pending) || pending in dying) {
@@ -385,9 +347,15 @@ object AutoBattleManager {
             val targetName = target.pokemon.species.translatedName.copy().withStyle(ChatFormatting.YELLOW)
             message(player, ChatFormatting.RED, "autobattle.battle_lost", hunterName, targetName)
 
-            // Marca como recuado JÁ: a fase 2 do próximo tick recolhe/tira do banco sem
-            // duplicar mensagem (o add ali retorna false porque o uuid já está no set).
+            // A derrota oficializa o desmaio e recolhe o Pokémon imediatamente.
+            winner.currentHealth = 0
+            if (config.fireFaintEvents) {
+                CobblemonEvents.POKEMON_FAINTED.post(
+                    PokemonFaintedEvent(winner, Cobblemon.config.defaultFaintTimer)
+                )
+            }
             session.retreated.add(winner.uuid)
+            recall(hunter.entity)
             hunter.target = null
             hunter.directed = false
             hunter.resetChase()
@@ -500,7 +468,7 @@ object AutoBattleManager {
         }
     }
 
-    /** Adiciona como caçador qualquer Pokémon da party que esteja fora e ainda não seja rastreado. */
+    /** Adiciona como caçador qualquer Pokémon manualmente solto que ainda não seja rastreado. */
     private fun reconcileHunters(player: ServerPlayer, session: AutoBattleSession) {
         val party = Cobblemon.storage.getParty(player)
         for (pokemon in party) {
