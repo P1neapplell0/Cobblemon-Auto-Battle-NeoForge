@@ -2,6 +2,7 @@ package com.cobblemonautobattle.autobattle.client
 
 import com.cobblemonautobattle.autobattle.net.HuntTargetPayload
 import com.cobblemonautobattle.autobattle.net.ToggleAutoBattlePayload
+import com.cobblemon.mod.common.client.CobblemonClient
 import com.mojang.blaze3d.platform.InputConstants
 import net.minecraft.client.KeyMapping
 import net.minecraft.client.Minecraft
@@ -54,7 +55,8 @@ object AutoBattleClient {
         }
         while (huntTargetKey.consumeClick()) {
             if (client.player != null && client.connection != null) {
-                PacketDistributor.sendToServer(HuntTargetPayload.INSTANCE)
+                val selectedSlot = CobblemonClient.storage.selectedSlot
+                PacketDistributor.sendToServer(HuntTargetPayload(selectedSlot))
             }
         }
     }

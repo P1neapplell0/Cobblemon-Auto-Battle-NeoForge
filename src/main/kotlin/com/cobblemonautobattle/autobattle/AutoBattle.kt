@@ -36,9 +36,11 @@ class AutoBattle(modBus: IEventBus) {
                 (context.player() as? ServerPlayer)?.let(AutoBattleManager::toggle)
             }
         }
-        registrar.playToServer(HuntTargetPayload.TYPE, HuntTargetPayload.CODEC) { _, context ->
+        registrar.playToServer(HuntTargetPayload.TYPE, HuntTargetPayload.CODEC) { payload, context ->
             context.enqueueWork {
-                (context.player() as? ServerPlayer)?.let(AutoBattleManager::huntTarget)
+                (context.player() as? ServerPlayer)?.let { player ->
+                    AutoBattleManager.huntTarget(player, payload.slot)
+                }
             }
         }
     }

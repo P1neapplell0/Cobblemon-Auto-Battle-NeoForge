@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.3 - 2026-08-22
+
+- Keep normal auto-battle limited to Pokémon already released by the player.
+- Use Cobblemon's actual client-selected party slot for quick battle, including automatic send-out when needed.
+
 ## 1.4.2 - 2026-08-22
 
 - Include the attacking Pokémon's name in victory announcements.

@@ -58,10 +58,10 @@ object AutoBattleManager {
     /**
      * Caça direcionada (tecla V): raycast do olhar do jogador até [AutoBattleConfig.directedHuntRange]
      * blocos; se mirar num selvagem válido, o caçador mais próximo vai atrás DELE (ignorando o raio
-     * de busca). Só Pokémon que já estejam fora da bola podem aceitar a missão. Raros protegidos
-     * continuam intocáveis.
+     * de busca). Se nenhum Pokémon estiver fora, o rápido usa o primeiro Pokémon utilizável da
+     * party e o solta para cumprir a missão. Raros protegidos continuam intocáveis.
      */
-    fun huntTarget(player: ServerPlayer) {
+    fun huntTarget(player: ServerPlayer, selectedSlot: Int) {
         val config = AutoBattle.config
         if (!config.enabled) {
             message(player, ChatFormatting.RED, "autobattle.disabled_in_config")
@@ -91,17 +91,14 @@ object AutoBattleManager {
         // Enxerga imediatamente os Pokémon que já estão fora.
         reconcileHunters(player, session)
 
-        // Só aceita a missão com Pokémon acima do limiar de recuo — senão ela nasceria morta
-        // (sairia da bola e recuaria no tick seguinte).
-        val hunter = session.hunters
-            .filter { isBattleReady(it.pokemon, config) }
-            .minByOrNull { it.entity.distanceToSqr(target) }
-        if (hunter == null) {
+        val party = Cobblemon.storage.getParty(player)
+        val attacker = if (selectedSlot in 0 until party.size()) party.get(selectedSlot) else null
+        if (attacker == null || !isBattleReady(attacker, config)) {
             if (existing == null && session.hunters.isEmpty()) sessions.remove(player.uuid)
             message(player, ChatFormatting.RED, "autobattle.no_usable_pokemon")
             return
         }
-        val attacker = hunter.pokemon
+        val selectedHunter = session.hunters.firstOrNull { it.pokemon.uuid == attacker.uuid }
         if (!CombatCalculator.isEligibleTarget(attacker, target.pokemon, config)) {
             if (existing == null && session.hunters.isEmpty()) sessions.remove(player.uuid)
             message(player, ChatFormatting.RED, "autobattle.hunt_too_strong", targetName, target.pokemon.level)
@@ -109,9 +106,16 @@ object AutoBattleManager {
         }
 
         val attackerName = attacker.species.translatedName.copy().withStyle(ChatFormatting.AQUA)
-        hunter.target = target
-        hunter.directed = true
-        hunter.resetChase()
+        if (selectedHunter != null) {
+            selectedHunter.target = target
+            selectedHunter.directed = true
+            selectedHunter.resetChase()
+        } else {
+            // 快速战斗可以主动放出选中的队伍宝可梦；普通自动战斗不会走到这里。
+            session.pendingModSent.add(attacker.uuid)
+            session.pendingDirected = target
+            attacker.sendOutWithAnimation(player, player.serverLevel(), player.position())
+        }
         message(player, ChatFormatting.GREEN, "autobattle.hunt_started", attackerName, targetName)
     }
 
